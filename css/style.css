@@ -1,17 +1,21 @@
 body {
+  /* Margem ao redor do mapa */
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f5f5f5;
+  
 }
 
 header {
-  background: #2e7d32;
+  /* Cabeçalho */
+  background: #388e3c;
   color: white;
   padding: 15px;
   text-align: center;
 }
 
 nav {
+  /* Menu de navegação (início, como separar, etc) */
   display: flex;
   justify-content: center;
   background: #388e3c;
@@ -19,6 +23,7 @@ nav {
 }
 
 nav a {
+  /* Cores das letras do menu */
   color: white;
   text-decoration: none;
   margin: 0 15px;
@@ -26,15 +31,18 @@ nav a {
 }
 
 nav a:hover {
+  /* Efeito ao passar o mouse */
   text-decoration: underline;
 }
 
 main {
+  /* Centraliza o titulo */
   padding: 20px;
   text-align: center;
 }
 
 #map {
+  /* Define o tamanho do mapa */
   height: 500px;
   width: 100%;
   margin-top: 20px;
@@ -43,6 +51,7 @@ main {
 }
 
 footer {
+  /* Rodapé */
   text-align: center;
   background: #2e7d32;
   color: white;

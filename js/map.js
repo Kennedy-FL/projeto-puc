@@ -10,7 +10,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var pontos = [
   {nome: "Ponto de Coleta - Shopping", coords: [-23.5629, -46.6544]},
   {nome: "Ponto de Coleta - Supermercado", coords: [-23.5596, -46.6588]},
-  {nome: "Ponto de Coleta - Escola Municipal", coords: [-23.5525, -46.6396]}
+  {nome: "Ponto de Coleta - Escola Municipal", coords: [-23.5525, -46.6396]},
+  {nome: "Ponto de Coleta - Santa Ifigênia", coords: [-23.53762, -46.63918]}
 ];
 
 // Adiciona os marcadores no mapa
