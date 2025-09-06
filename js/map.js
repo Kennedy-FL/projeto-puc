@@ -1,21 +1,52 @@
-// Inicializa o mapa centralizado em São Paulo
-var map = L.map('map').setView([-23.5505, -46.6333], 12);
+// Inicializa o mapa centralizado no Brasil
+const map = L.map('map').setView([-14.235, -51.9253], 4);
 
-// Adiciona a camada do OpenStreetMap
+// Adiciona camada do OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
   attribution: '© OpenStreetMap'
 }).addTo(map);
 
-// Pontos fictícios de coleta
-var pontos = [
-  {nome: "Ponto de Coleta - Shopping", coords: [-23.5629, -46.6544]},
-  {nome: "Ponto de Coleta - Supermercado", coords: [-23.5596, -46.6588]},
-  {nome: "Ponto de Coleta - Escola Municipal", coords: [-23.5525, -46.6396]},
-  {nome: "Ponto de Coleta - Santa Ifigênia", coords: [-23.53762, -46.63918]}
-];
 
-// Adiciona os marcadores no mapa
-pontos.forEach(p => {
-  L.marker(p.coords).addTo(map)
-    .bindPopup(`<b>${p.nome}</b><br>Descarte de óleo, pilhas e baterias.`);
-});
+// Função para buscar o CEP
+async function buscarCEP() {
+  const cep = document.getElementById("cepInput").value.trim();
+
+  if (!cep) {
+    alert("Digite um CEP válido!");
+    return;
+  }
+
+  try {
+    // 1 - Consulta o ViaCEP
+    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const data = await response.json();
+
+    if (data.erro) {
+      alert("CEP não encontrado!");
+      return;
+    }
+
+    const endereco = `${data.logradouro}, ${data.localidade}, ${data.uf}`;
+
+    // 2 - Consulta no Nominatim (geocodificação)
+    const geoResp = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${endereco}`);
+    const geoData = await geoResp.json();
+
+    if (geoData.length === 0) {
+      alert("Não foi possível localizar no mapa.");
+      return;
+    }
+
+    const lat = parseFloat(geoData[0].lat);
+    const lon = parseFloat(geoData[0].lon);
+
+    // 3 - Atualiza o mapa e adiciona marcador
+    map.setView([lat, lon], 15);
+    L.marker([lat, lon]).addTo(map).bindPopup(`Você está aqui:<br>${endereco}`).openPopup();
+
+  } catch (error) {
+    alert("Erro ao buscar o CEP. Tente novamente.");
+    console.error(error);
+  }
+}

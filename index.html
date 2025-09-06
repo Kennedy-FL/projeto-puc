@@ -31,6 +31,23 @@
     <div id="map"></div>
   </main>
 
+  <div id="addPonto">
+  <h3>Adicionar ponto de coleta</h3>
+  <input type="text" id="nomePonto" placeholder="Nome do ponto">
+  <input type="text" id="enderecoPonto" placeholder="CEP ou endereço">
+  <button onclick="adicionarPonto()">Adicionar</button>
+</div>
+  <main>
+    <h2>Encontre pontos de coleta próximos</h2>
+
+  <!--  Campo de busca por CEP -->
+    <div id="busca-cep">
+      <input type="text" id="cepInput" placeholder="Digite seu CEP">
+      <button onclick="buscarCEP()">Buscar</button>
+    </div>
+
+    <div id="map"></div>
+  </main>
   <!-- Rodapé -->
   <footer>
     <p>&copy; 2025 - Projeto de Faculdade - Descarte Sustentável</p>
