@@ -1,6 +1,6 @@
 Contexto do Projeto ♻️
 
-Este projeto foi desenvolvido no contexto da disciplina de [nome da disciplina] do curso de [nome do curso e instituição], com o objetivo de aplicar na prática conceitos de desenvolvimento web e sustentabilidade.
+Este projeto foi desenvolvido no contexto da disciplina de análise e desenvolvimento de sistemas do curso da PUC Minas, com o objetivo de aplicar na prática conceitos de desenvolvimento web e sustentabilidade.
 
 A aplicação tem como foco a conscientização ambiental e o incentivo à reciclagem, permitindo que usuários localizem pontos de coleta de materiais recicláveis em sua região.
 
